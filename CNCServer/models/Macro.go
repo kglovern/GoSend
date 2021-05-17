@@ -3,10 +3,12 @@ package models
 import (
 	"database/sql"
 	"github.com/google/uuid"
+	"gorm.io/gorm"
 	"time"
 )
 
 type Macro struct {
+	gorm.Model
 	Name      string    `json:"name"`
 	ID        uuid.UUID `gorm:"type:uuid;default:uuid_generate_v4();primaryKey" json:"id"`
 	CreatedAt time.Time `json:"created_at"`
