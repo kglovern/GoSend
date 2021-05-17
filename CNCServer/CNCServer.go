@@ -2,7 +2,9 @@ package CNCServer
 
 import (
 	"github.com/gorilla/mux"
-	"github.com/jinzhu/gorm"
+	"github.com/kglovern/GoSend/CNCServer/models"
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 	"log"
 	"net/http"
 )
@@ -15,6 +17,19 @@ type CNCServer struct {
 func (s *CNCServer) Initialize() {
 	s.Router = mux.NewRouter()
 	s.initializeRoutes()
+	s.InitializeDB()
+}
+
+func (s *CNCServer) InitializeDB() {
+	db, err := gorm.Open(sqlite.Open("gosend_rc"), &gorm.Config{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = db.AutoMigrate(&models.Macro{})
+	if err != nil {
+		log.Fatal(err)
+	}
+	s.DB = db
 }
 
 func (s *CNCServer) initializeRoutes() {

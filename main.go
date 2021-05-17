@@ -1,6 +1,6 @@
 package main
 
-import "CNCServer"
+import "github.com/kglovern/GoSend/CNCServer"
 
 func main() {
 	server := CNCServer.CNCServer{}

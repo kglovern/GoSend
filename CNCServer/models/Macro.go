@@ -1,25 +1,24 @@
 package models
 
 import (
-	_ "GoSend/CNCServer"
-	"github.com/jinzhu/gorm"
+	"database/sql"
+	"time"
 )
 
 type Macro struct {
-	gorm.Model `json:"model"`
-	Name       string `json:"name"`
-	ID         string `json:"id"`
-	CreatedAt  string `json:"created_at"`
-	Content    string `json:"content"`
+	Name      string    `json:"name"`
+	ID        string    `json:"id"`
+	CreatedAt time.Time `json:"created_at"`
+	Content   string    `json:"content"`
 }
 
-func getAllMacros(db *gorm.DB) {
+func getAllMacros(db *sql.DB) {
 }
 
-func getMacroById(db *gorm.DB, id string) {}
+func getMacroById(db *sql.DB, id string) {}
 
-func updateMacro(db *gorm.DB, m *Macro) {}
+func updateMacro(db *sql.DB, m *Macro) {}
 
-func deleteMacro(db *gorm.DB, id string) {}
+func deleteMacro(db *sql.DB, id string) {}
 
-func newMacro(db *gorm.DB, m *Macro) {}
+func newMacro(db *sql.DB, m *Macro) {}
