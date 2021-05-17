@@ -7,5 +7,5 @@ import (
 
 func (s *CNCServer) getHomePage(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
-	fmt.Fprintf(w, "OK DOKIE!")
+	fmt.Fprintf(w, "New Model")
 }
